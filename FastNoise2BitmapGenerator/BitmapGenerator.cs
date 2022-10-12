@@ -1,26 +1,32 @@
-﻿using System;
+﻿using FastNoise2Bindings;
+using System;
 using System.IO;
 
 class BitmapGenerator
 {
     static void Main(string[] args)
     {
-        FastNoise cellular = new FastNoise("CellularDistance");
+        using NoiseNode cellular = new NoiseNode("CellularDistance");
         cellular.Set("ReturnType", "Index0Add1");
         cellular.Set("DistanceIndex0", 2);
 
-        FastNoise fractal = new FastNoise("FractalFBm");
-        fractal.Set("Source", new FastNoise("Simplex"));
+
+        using NoiseNode simplex = new NoiseNode("Simplex");
+
+
+        using NoiseNode fractal = new NoiseNode("FractalFBm");
+        fractal.Set("Source", simplex);
         fractal.Set("Gain", 0.3f);
         fractal.Set("Lacunarity", 0.6f);
 
-        FastNoise addDim = new FastNoise("AddDimension");
+
+        using NoiseNode addDim = new NoiseNode("AddDimension");
         addDim.Set("Source", cellular);
         addDim.Set("NewDimensionPosition", 0.5f);
         // or
         // addDim.Set("NewDimensionPosition", new FastNoise("Perlin"));
 
-        FastNoise maxSmooth = new FastNoise("MaxSmooth");
+        using NoiseNode maxSmooth = new NoiseNode("MaxSmooth");
         maxSmooth.Set("LHS", fractal);
         maxSmooth.Set("RHS", addDim);
 
@@ -29,7 +35,7 @@ class BitmapGenerator
         GenerateBitmap(maxSmooth, "testMetadata");
 
         // Simplex fractal ENT
-        FastNoise nodeTree = FastNoise.FromEncodedNodeTree("DQAFAAAAAAAAQAgAAAAAAD8AAAAAAA==");
+        using NoiseNode nodeTree = NoiseNode.FromEncodedNodeTree("DQAFAAAAAAAAQAgAAAAAAD8AAAAAAA==");
 
         // Encoded node trees can be invalid and return null
         if (nodeTree != null)
@@ -38,7 +44,7 @@ class BitmapGenerator
         }
     }
 
-    static void GenerateBitmap(FastNoise fastNoise, string filename, ushort size = 512)
+    static void GenerateBitmap(NoiseNode fastNoise, string filename, ushort size = 512)
     {
         using (BinaryWriter writer = new BinaryWriter(File.Open(filename + ".bmp", FileMode.Create)))
         {
@@ -65,7 +71,7 @@ class BitmapGenerator
             }
             // Image data
             float[] noiseData = new float[size * size];
-            FastNoise.OutputMinMax minMax = fastNoise.GenUniformGrid2D(noiseData, 0, 0, size, size, 0.02f, 1337);
+            OutputMinMax minMax = fastNoise.GenUniformGrid2D(noiseData, 0, 0, size, size, 0.02f, 1337);
 
             float scale = 255.0f / (minMax.max - minMax.min);
 

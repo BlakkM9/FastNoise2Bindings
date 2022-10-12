@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32922.545
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FastNoise2BitmapGenerator", "FastNoise2BitmapGenerator\FastNoise2BitmapGenerator.csproj", "{8D55EB0D-C76A-4A78-AC1D-873FDC962A7B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FastNoise2Bindings", "FastNoise2Bindings\FastNoise2Bindings.csproj", "{CA33877D-1C69-407F-A91C-EC164EA3DE40}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8D55EB0D-C76A-4A78-AC1D-873FDC962A7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D55EB0D-C76A-4A78-AC1D-873FDC962A7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D55EB0D-C76A-4A78-AC1D-873FDC962A7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D55EB0D-C76A-4A78-AC1D-873FDC962A7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA33877D-1C69-407F-A91C-EC164EA3DE40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA33877D-1C69-407F-A91C-EC164EA3DE40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA33877D-1C69-407F-A91C-EC164EA3DE40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA33877D-1C69-407F-A91C-EC164EA3DE40}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FB8F5BDF-34E2-4CFE-AC18-2A8FD8E302A3}
+	EndGlobalSection
+EndGlobal
